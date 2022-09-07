@@ -1,0 +1,69 @@
+.post
+  width: 100%
+  border-radius: 10px
+  background-color: #f0f0f3
+  box-shadow: 10px 10px 21px #d3d3d6, -10px -10px 21px #fff
+  overflow: hidden
+  margin-bottom: 30px
+
+  .img
+    display: block
+    width: 100%
+    height: 350px
+
+  .title
+    font-size: 30px
+    font-weight: 700
+    text-decoration: none
+    color: #000
+    line-height: 60px
+    padding: 10px
+    transition: color 0.2s linear
+
+    &:hover
+      color: lighten(#000, 30%)
+
+  .content
+    padding: 0 10px 10px
+    text-align: justify
+
+  .footer
+    display: flex
+    justify-content: space-between
+    padding: 0 10px 10px
+
+    .tags
+      display: flex
+
+      .tag
+        color: #666666
+        margin-right: 10px
+        padding-left: 10px
+        position: relative
+        transition: color 0.2s linear
+
+        &:before
+          display: block
+          position: absolute
+          top: 8px
+          left: 0
+          content: ''
+          width: 5px
+          height: 5px
+          background-color: #666666
+          border-radius: 5px
+        &:hover
+          color: darken(#666666, 40%)
+
+
+    .view
+      display: flex
+
+      .icon
+        width: 20px
+        height: 21px
+        opacity: .3
+        margin-right: 5px
+
+      .count
+        color: #666666
