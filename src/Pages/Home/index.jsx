@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './home.module.sass';
-import Post from "../../components/Post/Post";
-import Tags from "../../components/Tags/Tags";
+import Post from "../../components/Post";
+import Tags from "../../components/Tags";
 
 const Home = () => {
     return (

@@ -8,7 +8,7 @@ const Post = (props) => {
     const {children, id} = props
     return (
         <div className={classes.post}>
-            <img src="https://miro.medium.com/1*YePVzjkjsadOqzQ03wl5kA.png" alt="img-post"
+            <img src='https://cdn.nur.kz/images/1120/daedc6636b82c2f6.jpeg' alt="img-post"
                  className={classes.img} />
             <Link className={classes.title} to={`/post/${id}`}>React</Link>
             {children && <div className={classes.content}>{children}</div>}

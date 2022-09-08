@@ -2,7 +2,9 @@ import React from 'react';
 import classes from './header.module.sass';
 import {Link} from "react-router-dom";
 
-const Index = () => {
+const Header = () => {
+    const isAuth = true;
+
     return (
         <header>
             <div className={classes.container}>
@@ -10,12 +12,22 @@ const Index = () => {
                     <div className={classes.logo} >BLOG</div>
                 </Link>
 
-                <Link to='/auth'>
+                {isAuth ?
+                    <div>
+                        <Link to='/add-post'>
+                            <button className={classes.btn__create}>Создать пост</button>
+                        </Link>
+                        <Link to='/auth'>
+                            <button className={classes.btn}>Выйти</button>
+                        </Link>
+                    </div> :
+                    <Link to='/auth'>
                     <button className={classes.btn}>Войти</button>
-                </Link>
+                    </Link>
+                }
             </div>
         </header>
     );
 };
 
-export default Index;
+export default Header;

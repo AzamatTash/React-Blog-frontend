@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./tags.module.sass";
 
-const Tags = () => {
+const Index = () => {
     return (
         <div className={classes.tags}>Tags:
             <a className={classes.tag} href='/src/components/Pages'>
@@ -26,4 +26,4 @@ const Tags = () => {
     );
 };
 
-export default Tags;
+export default Index;
