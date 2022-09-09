@@ -10,7 +10,6 @@ const Home = () => {
                 <Post/>
                 <Post/>
                 <Post/>
-                <Post/>
             </div>
             <div className={classes.right}>
                 <Tags/>

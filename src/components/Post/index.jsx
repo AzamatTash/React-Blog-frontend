@@ -3,9 +3,14 @@ import classes from "./post.module.sass";
 import {Link} from "react-router-dom";
 
 import view from "../../assets/img/view.png";
+import PreloaderPost from "./PreloaderPost";
 
 const Post = (props) => {
-    const {children, id} = props
+    const {children, id} = props;
+    const isLoading = false;
+
+    if (isLoading) return <PreloaderPost/>
+
     return (
         <div className={classes.post}>
             <img src='https://cdn.nur.kz/images/1120/daedc6636b82c2f6.jpeg' alt="img-post"
