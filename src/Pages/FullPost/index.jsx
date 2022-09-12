@@ -1,27 +1,36 @@
 import React from 'react';
+import {api} from "../../axios";
+import {useParams} from 'react-router-dom';
+
 import Post from '../../components/Post';
 import PreloaderFullPost from './PreloaderFullPost';
 
 const FullPost = () => {
-    const isLoading = false;
+    const [data, setData] = React.useState();
+    const [isLoading, setLoading] = React.useState(true);
+
+    const {id} = useParams();
+
+    React.useEffect(() => {
+        api.getOnePost(id).then((res) => {
+            setData(res.data);
+            setLoading(false);
+        }).catch(() => {
+            alert('Не удалось найти данный пост');
+        })
+    },[])
 
     if (isLoading) return <PreloaderFullPost/>
 
     return (
-            <Post>
-                <p>
-                    React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.
-                    React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.
-                    React может использоваться для разработки одностраничных и мобильных приложений.React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.
-                    React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.
-                    React может использоваться для разработки одностраничных и мобильных приложений.React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.
-                    React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.
-                    React может использоваться для разработки одностраничных и мобильных приложений.React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.
-                    React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.
-                    React может использоваться для разработки одностраничных и мобильных приложений.React — JavaScript-библиотека с открытым исходным кодом для разработки пользовательских интерфейсов.
-                    React разрабатывается и поддерживается Facebook, Instagram и сообществом отдельных разработчиков и корпораций.
-                </p>
-            </Post>
+        <Post key={data._is}
+              img={data.imageUrl}
+              tags={data.tags}
+              title={data.title}
+              viewsCount={data.viewsCount}
+        >
+            <p>{data.text}</p>
+        </Post>
     );
 };
 

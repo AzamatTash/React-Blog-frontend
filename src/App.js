@@ -8,7 +8,6 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Registration";
 import AddPost from "./Pages/AddPost";
 
-
 function App() {
   return (
       <div>

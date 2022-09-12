@@ -8,7 +8,7 @@ const PreloaderPost = () => {
             width={540}
             height={435}
             viewBox="0 0 540 435"
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: '100%', height: '100%'}}
             backgroundColor="#d6d6d6"
             foregroundColor="#cccccc"
         >
