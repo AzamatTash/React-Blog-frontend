@@ -28,7 +28,7 @@ const AddPost = () => {
             const file = e.target.files[0];
             formData.append('image', file);
             const {data} = await api.uploadImg(formData);
-            setImageUrl(data.url);
+            setImageUrl('https://react-blog-backend-mern.herokuapp.com' + data.url);
         } catch (err) {
             alert('Ошибак при загрузке каринки')
         }
@@ -42,13 +42,13 @@ const AddPost = () => {
         try {
             const fields = {
                 title: values.title,
-                tags: values.tags,
+                tags: [values.tags],
                 imageUrl,
                 text
             };
             const {data} = await api.uploadPost(fields);
             const id = data._id;
-            navigate(`posts/${id}`)
+            navigate(`/posts/${id}`)
         } catch(err) {
             alert('Ошибка при создание поста')
         }
