@@ -18,8 +18,8 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading}) => {
             {children && <div className={classes.content}>{children}</div>}
             <div className={classes.footer}>
                 <div className={classes.tags}>
-                    {tags.map(tag => (
-                        <div className={classes.tag}>{tag}</div>
+                    {tags.map((tag, index) => (
+                        <div key={index} className={classes.tag}>{tag}</div>
                     ))}
                 </div>
 

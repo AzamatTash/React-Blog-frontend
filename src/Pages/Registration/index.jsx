@@ -1,11 +1,11 @@
 import React from 'react';
-import classes from "../Login/login.module.sass";
-import {Form, Formik} from "formik";
+import classes from '../Login/login.module.sass';
+import {Form, Formik} from 'formik';
 
-import {validationForm} from "../../utils/validationForm";
-import FieldEmail from "../../components/Form/FieldEmail";
-import FieldPassword from "../../components/Form/FieldPassword";
-import FieldName from "../../components/Form/FieldName";
+import {validationForm} from '../../utils/validationForm';
+import FieldEmail from '../../components/Form/FieldEmail';
+import FieldPassword from '../../components/Form/FieldPassword';
+import FieldName from '../../components/Form/FieldName';
 
 const Register = () => {
     const initialValues = {

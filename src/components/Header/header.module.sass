@@ -34,22 +34,60 @@ header
         background-color: #fff
         color: darken(#1976d2, 30%)
 
-    .btn,
-    .btn__create
-      height: 45px
-      background-color: transparent
-      border-radius: 5px
-      border: none
-      color: #fff
-      font-size: 20px
-      font-weight: 500
-      line-height: 1px
-      cursor: pointer
-      transition: background-color .3s linear
+    .right
+      display: flex
+      align-items: center
+      text-decoration: none
+      position: relative
 
-      &:hover
-        background-color: darken(#1976d2, 5%)
+      .avatar
+        width: 40px
+        height: 40px
+        border-radius: 50%
+        margin-right: 10px
+        object-fit: cover
+        cursor: pointer
 
-    .btn__create
-      background-color: #0b3660
-      margin-right: 10px
+      .btn,
+      .btn__create
+        height: 45px
+        background-color: transparent
+        border-radius: 5px
+        border: none
+        color: #fff
+        font-size: 20px
+        font-weight: 500
+        line-height: 1px
+        cursor: pointer
+        transition: background-color .3s linear
+
+        &:hover
+          background-color: darken(#1976d2, 5%)
+
+      .btn__create
+        background-color: #0b3660
+        margin-right: 10px
+
+      .view__avatar
+        display: block
+        position: absolute
+        width: 200px
+        border-radius: 10px
+        top: 70px
+        left: -80px
+        overflow: hidden
+        background-color: #1976d2
+        z-index: 1000
+
+        .avatar__full
+          width: 200px
+          height: 142px
+          object-fit: cover
+
+        .name
+          height: 45px
+          color: #ffffff
+          text-align: center
+          font-size: 18px
+          font-weight: 400
+          padding: 9px 0

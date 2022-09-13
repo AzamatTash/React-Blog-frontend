@@ -1,11 +1,17 @@
 import React from 'react';
 import classes from './addPost.module.sass';
-import Editor from "../../components/Editor/Editor";
-import {Field, Form, Formik} from "formik";
+import Editor from '../../components/Editor/Editor';
+import {Field, Form, Formik} from 'formik';
+import {api} from '../../axios';
+import {Navigate, useNavigate} from 'react-router-dom';
+import {useSelector} from "react-redux";
 
 const AddPost = () => {
+    const navigate = useNavigate();
+    const {data} = useSelector(state => state.auth)
+    const isNotAuth = data === null;
     const [text, setText] = React.useState('');
-    const [imageUrl, setImageUrl] = React.useState(' ');
+    const [imageUrl, setImageUrl] = React.useState('');
     const inputFileRef = React.useRef(null);
     const initialValues = {
         title: '',
@@ -19,10 +25,10 @@ const AddPost = () => {
     const handleChangeFile = async (e) => {
         try {
             const formData = new FormData();
-            const file = e.target.file[0];
+            const file = e.target.files[0];
             formData.append('image', file);
-            // const {data} = await axios.post('/upload', formData);
-            // setImageUrl(data.url);
+            const {data} = await api.uploadImg(formData);
+            setImageUrl(data.url);
         } catch (err) {
             alert('Ошибак при загрузке каринки')
         }
@@ -32,9 +38,25 @@ const AddPost = () => {
         setImageUrl('');
     };
 
-    const onSubmit = values => {
-        console.log(`${values.title}, ${values.tags}, ${text}`)
+    const onSubmit = async (values) => {
+        try {
+            const fields = {
+                title: values.title,
+                tags: values.tags,
+                imageUrl,
+                text
+            };
+            const {data} = await api.uploadPost(fields);
+            const id = data._id;
+            navigate(`posts/${id}`)
+        } catch(err) {
+            alert('Ошибка при создание поста')
+        }
     };
+
+    if(window.localStorage.getItem('token') && isNotAuth) {
+        return <Navigate to='/'/>
+    }
 
     return (
         <div className={classes.wrapper}>
@@ -47,7 +69,7 @@ const AddPost = () => {
                     <button className={classes.btn__del} onClick={onClickRemoveImage}>
                         Удалить
                     </button>
-                    <img className={classes.image} src={'https://cdn.nur.kz/images/1120/daedc6636b82c2f6.jpeg' || `http://localhost:4444${imageUrl}`} alt="Uploaded" />
+                    <img className={classes.image} src={imageUrl} alt="Uploaded" />
                 </>
             )}
             <Formik initialValues={initialValues} onSubmit={onSubmit}>
