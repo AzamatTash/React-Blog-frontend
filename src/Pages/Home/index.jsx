@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from './home.module.sass';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchPosts} from '../../redux/slices/posts';
 
 import Post from '../../components/Post';
 import Tags from '../../components/Tags';
+import {fetchPosts} from '../../redux/slices/posts';
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,8 @@ const Home = () => {
     return (
         <main>
             <div className={classes.left}>
-                {isPostsError ? <div className={classes.notFound}>Посты не найдены</div> :
+                {
+                    isPostsError ? <div className={classes.notFound}>Посты не найдены</div> :
                     (isPostsLoading ? [...Array(5)] : items).map((post, index) =>
                         isPostsLoading ? <Post key={index} isLoading={true}/> :
                             <Post key={post._id}

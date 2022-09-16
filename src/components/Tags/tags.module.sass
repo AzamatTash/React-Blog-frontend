@@ -12,7 +12,27 @@
     margin: 5px 0 0 15px
     text-decoration: none
     cursor: pointer
-    transition: color 0.2s linear
+    transition: 0.2s linear
+    border-radius: 8px
+    position: relative
 
     &:hover
       color: darken(#666666, 40%)
+      background-color: #e0e0e0
+
+    &:after
+      display: block
+      content: ''
+      position: absolute
+      width: 5px
+      height: 5px
+      border-radius: 50%
+      background-color: #666666
+      z-index: 1000
+      top: 11px
+      left: -12px
+
+  .notFound
+    font-size: 16px
+    font-weight: 300
+    text-align: center

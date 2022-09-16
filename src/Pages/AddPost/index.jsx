@@ -19,7 +19,7 @@ const AddPost = () => {
     }
 
     const onChange = (value) => {
-        setText(value)
+        setText(value);
     };
 
     const handleChangeFile = async (e) => {
@@ -30,7 +30,7 @@ const AddPost = () => {
             const {data} = await api.uploadImg(formData);
             setImageUrl('https://react-blog-backend-mern.herokuapp.com' + data.url);
         } catch (err) {
-            alert('Ошибак при загрузке каринки')
+            alert('Ошибак при загрузке изображения')
         }
     };
 
@@ -42,21 +42,18 @@ const AddPost = () => {
         try {
             const fields = {
                 title: values.title,
-                tags: [values.tags],
+                tags: values.tags.split(','),
                 imageUrl,
                 text
             };
-            const {data} = await api.uploadPost(fields);
-            const id = data._id;
-            navigate(`/posts/${id}`)
+            await api.uploadPost(fields);
+            navigate('/');
         } catch(err) {
-            alert('Ошибка при создание поста')
+            alert('Ошибка при создание поста');
         }
     };
 
-    if(window.localStorage.getItem('token') && isNotAuth) {
-        return <Navigate to='/'/>
-    }
+    if(window.localStorage.getItem('token') && isNotAuth) return <Navigate to='/'/>
 
     return (
         <div className={classes.wrapper}>

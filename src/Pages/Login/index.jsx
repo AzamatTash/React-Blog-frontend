@@ -21,10 +21,12 @@ const Login = () => {
     };
 
     const onSubmit = async (values) => {
-        const {payload} = await dispatch(fetchAuth(values));
-        if(!payload) return alert('Не удалось авторизоваться');
-
-        if('token' in payload) return  window.localStorage.setItem('token', payload.token);
+        try {
+            const {payload} = await dispatch(fetchAuth(values));
+            if('token' in payload) return  window.localStorage.setItem('token', payload.token);
+        } catch (err) {
+            alert('Не удалось авторизоваться');
+        }
     };
 
     if(!isNotAuth) return <Navigate to='/'/>

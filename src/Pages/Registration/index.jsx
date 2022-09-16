@@ -1,21 +1,35 @@
 import React from 'react';
 import classes from '../Login/login.module.sass';
 import {Form, Formik} from 'formik';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 import {validationForm} from '../../utils/validationForm';
 import FieldEmail from '../../components/Form/FieldEmail';
 import FieldPassword from '../../components/Form/FieldPassword';
 import FieldName from '../../components/Form/FieldName';
+import {fetchRegister} from '../../redux/slices/auth';
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const initialValues = {
-        name:'',
+        fullName:'',
         email: '',
         password: ''
     };
 
-    const onSubmit = values => {
-        console.log(values);
+    const onSubmit = async (values) => {
+        try {
+            const {payload} = await dispatch(fetchRegister(values));
+            if('token' in payload) {
+                window.localStorage.setItem('token', payload.token);
+            }
+            navigate('/');
+        } catch (err) {
+            alert('Не удалось зарегистрироваться');
+        }
     };
 
     return (

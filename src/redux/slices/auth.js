@@ -1,10 +1,20 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {api} from "../../axios";
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
+import {api} from '../../axios';
+
+export const fetchRegister = createAsyncThunk('auth/fetchRegister', async (params) => {
+    const {data} = await api.register(params);
+    return data;
+});
 
 export const fetchAuth = createAsyncThunk('auth/fetchAuth', async (params) => {
     const {data} = await api.login(params);
     return data;
-})
+});
+
+export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
+    const {data} = await api.getMe();
+    return data;
+});
 
 const initialState = {
     data: null,
@@ -29,6 +39,30 @@ const authSlice = createSlice({
             state.status = 'loaded';
         },
         [fetchAuth.rejected]: (state) => {
+            state.data = null;
+            state.status = 'error';
+        },
+        [fetchAuthMe.pending]: (state) => {
+            state.data = null;
+            state.status = 'loading';
+        },
+        [fetchAuthMe.fulfilled]: (state, action) => {
+            state.data = action.payload;
+            state.status = 'loaded';
+        },
+        [fetchAuthMe.rejected]: (state) => {
+            state.data = null;
+            state.status = 'error';
+        },
+        [fetchRegister.pending]: (state) => {
+            state.data = null;
+            state.status = 'loading';
+        },
+        [fetchRegister.fulfilled]: (state, action) => {
+            state.data = action.payload;
+            state.status = 'loaded';
+        },
+        [fetchRegister.rejected]: (state) => {
             state.data = null;
             state.status = 'error';
         },

@@ -3,13 +3,19 @@ import axios from 'axios';
 const instance = axios.create({
     baseURL: 'https://react-blog-backend-mern.herokuapp.com/' || process.env.REACT_APP_API_URL,
     headers: {
-        authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzBlZmM3NjJlYmU1ZDZlNGQ4N2Y0YTEiLCJpYXQiOjE2NjMwNjUzMzcsImV4cCI6MTY2NTY1NzMzN30.YLH6IfS7ZhwSDHdgazXGoZiOxQskeusvBvPNh6v8tNE'
+        authorization: window.localStorage.getItem('token')
     }
 });
 
 export const api = {
+    register(params) {
+        return instance.post('auth/register', params);
+    },
     login(params) {
         return instance.post('/auth/login', params);
+    },
+    getMe() {
+        return instance.get('auth/me');
     },
     getPosts() {
         return instance.get('posts');
@@ -22,5 +28,8 @@ export const api = {
     },
     uploadPost(data) {
         return instance.post('posts', data)
+    },
+    getTags() {
+        return instance.get('tags');
     }
 };
