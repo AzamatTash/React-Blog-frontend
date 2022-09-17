@@ -5,12 +5,13 @@ import {useDispatch} from 'react-redux';
 import PreloaderTag from './PreloaderTag';
 import {filterPosts} from '../../redux/slices/posts';
 
-const Tag = ({tag, isLoading}) => {
+const Tag = ({tag, isLoading, setActiveFilter}) => {
     const dispatch = useDispatch();
     if (isLoading) return <PreloaderTag/>
 
     const handleOnClickTag = e => {
         dispatch(filterPosts(e.target.innerText));
+        setActiveFilter(1)
     }
 
     return (

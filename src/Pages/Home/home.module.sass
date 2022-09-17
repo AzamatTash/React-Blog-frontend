@@ -13,6 +13,33 @@ main
       text-align: center
       font-size: 20px
 
+    .filter
+      width: 100%
+      display: flex
+      align-items: center
+      margin-bottom: 15px
+
+      .item,
+      .active
+        color: #666666
+        font-size: 16px
+        font-weight: 500
+        margin-right: 20px
+        padding-bottom: 5px
+        cursor: pointer
+
+        &:last-child
+          display: none
+
+      .active
+        display: block
+        color: #1976d2
+        padding-bottom: 4px
+        border-bottom: 1px solid #1976d2
+
+        &:last-child
+          display: block
+
   .right
     width: 30%
     max-width: 222px
