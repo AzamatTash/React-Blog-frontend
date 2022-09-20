@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './fullPost.module.sass';
 import {api} from "../../axios";
 import {useParams} from 'react-router-dom';
 
@@ -20,17 +21,18 @@ const FullPost = () => {
         })
     },[])
 
-    if (isLoading) return <PreloaderFullPost/>
-
     return (
-        <Post key={data._is}
-              img={data.imageUrl}
-              tags={data.tags}
-              title={data.title}
-              viewsCount={data.viewsCount}
-        >
-            <p>{data.text}</p>
-        </Post>
+        <div className={classes.content}>
+            {isLoading ? <PreloaderFullPost/> :
+                <Post key={data._is}
+                   img={data.imageUrl}
+                   tags={data.tags}
+                   title={data.title}
+                   viewsCount={data.viewsCount}
+                >
+                    <p>{data.text}</p>
+                </Post>}
+        </div>
     );
 };
 

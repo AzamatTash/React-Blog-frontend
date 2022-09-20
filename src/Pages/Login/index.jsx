@@ -16,8 +16,8 @@ const Login = () => {
     const isNotAuth = data === null;
 
     const initialValues = {
-        email: '',
-        password: ''
+        email: 'Anna@mail.ru',
+        password: 'Anna56'
     };
 
     const onSubmit = async (values) => {

@@ -1,93 +1,53 @@
 header
-  width: 100%
-  height: 65px
-  padding: 10px
-  min-width: 400px
-  background-color: #1976d2
-  box-shadow: 0 4px 8px -1px lighten(#000, 40%)
-  margin-bottom: 30px
+  position: fixed
+  top: 0
+  left: 0
+  width: calc(100% - 300px)
+  height: 39px
+  background-color: #fff
+  z-index: 1000
+
+  @media (max-width: 767px)
+    width: 100%
 
   .container
     width: 100%
-    max-width: 800px
-    margin: 0 auto
-    padding: 0 10px
-    display: flex
-    justify-content: space-between
-    align-items: center
+    padding: 10px 20px
 
-    .left
-      width: 95px
-      height: 45px
-      background-color: darken(#1976d2, 25%)
-      border-radius: 5px
-      text-decoration: none
-      color: #fff
-      transition: background-color .3s linear
-
-      .logo
-        font-size: 30px
-        font-weight: 700
-        margin: 0 10px
-
-      &:hover
-        background-color: #fff
-        color: darken(#1976d2, 30%)
-
-    .right
+    .filter
+      width: 100%
       display: flex
       align-items: center
-      text-decoration: none
-      position: relative
 
-      .avatar
-        width: 40px
-        height: 40px
-        border-radius: 50%
-        margin-right: 10px
-        object-fit: cover
-        cursor: pointer
-
-      .btn,
-      .btn__create
-        height: 45px
-        background-color: transparent
-        border-radius: 5px
-        border: none
-        color: #fff
-        font-size: 20px
+      .item,
+      .active
+        color: #666666
+        font-size: 16px
         font-weight: 500
-        line-height: 1px
+        margin-right: 20px
+        padding-bottom: 5px
         cursor: pointer
-        transition: background-color .3s linear
 
-        &:hover
-          background-color: darken(#1976d2, 5%)
+        &:last-child
+          display: none
 
-      .btn__create
-        background-color: #0b3660
-        margin-right: 10px
-
-      .view__avatar
+      .active
         display: block
-        position: absolute
-        width: 200px
-        border-radius: 10px
-        top: 70px
-        left: -80px
-        overflow: hidden
-        background-color: #1976d2
-        z-index: 1000
+        color: #1976d2
+        padding-bottom: 4px
+        border-bottom: 1px solid #1976d2
 
-        .avatar__full
-          width: 200px
-          height: 142px
-          object-fit: cover
+        &:last-child
+          display: block
 
-        .name
-          height: 45px
-          color: #ffffff
-          text-align: center
-          font-size: 18px
-          font-weight: 400
-          padding: 9px 0
+    .icon
+      display: none
+      position: absolute
+      top: 2px
+      right: 20px
+      width: 35px
+      height: 35px
+      cursor: pointer
+
+      @media (max-width: 767px)
+        display: block

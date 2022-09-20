@@ -2,21 +2,22 @@ import React from 'react';
 import classes from './tags.module.sass';
 import {useDispatch} from 'react-redux';
 
-import PreloaderTag from './PreloaderTag';
 import {filterPosts} from '../../redux/slices/posts';
+import {MyContext} from '../../App';
 
-const Tag = ({tag, isLoading, setActiveFilter}) => {
+const Tag = ({tag}) => {
     const dispatch = useDispatch();
-    if (isLoading) return <PreloaderTag/>
+    const {viewSideBar, setViewSideBar, setActiveFilter} = React.useContext(MyContext);
 
     const handleOnClickTag = e => {
-        dispatch(filterPosts(e.target.innerText));
-        setActiveFilter(1)
-    }
+        setActiveFilter(1);
+        setViewSideBar(!viewSideBar);
+        dispatch(filterPosts(e.target.innerText.replace('#', '')));
+    };
 
     return (
         <div className={classes.tag} onClick={handleOnClickTag}>
-            {tag}
+            #{tag}
         </div>
     );
 };

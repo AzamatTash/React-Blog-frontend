@@ -2,10 +2,10 @@ import React from 'react';
 import classes from './tags.module.sass';
 
 import Tag from './Tag';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchTags} from "../../redux/slices/tags";
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchTags} from '../../redux/slices/tags';
 
-const Tags = ({setActiveFilter}) => {
+const Tags = () => {
     const dispatch = useDispatch();
     const {items, status} = useSelector(state => state.tags);
     const isTagsLoading = status === 'loading';
@@ -16,12 +16,13 @@ const Tags = ({setActiveFilter}) => {
     }, []);
 
     return (
-        <div className={classes.tags}>Tags:
+        <div className={classes.tags}>
+            <div className={classes.title}>Поиск по тегу</div>
             {
                 isTagsError ? <div className={classes.notFound}>Теги не найдены</div>:
                 (isTagsLoading ? [...Array(5)] : items).map((tag, index) =>
                     isTagsLoading ? <Tag key={index} isLoading={true}/> :
-                                    <Tag key={index} setActiveFilter={setActiveFilter} tag={tag}/>
+                                    <Tag key={index} tag={tag}/>
                 )
             }
         </div>

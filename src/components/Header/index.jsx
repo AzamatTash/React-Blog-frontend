@@ -1,55 +1,36 @@
 import React from 'react';
 import classes from './header.module.sass';
-import {Link} from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../../redux/slices/auth';
+import {useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
-import userAvatar from '../../assets/img/user.png';
+import {fetchPosts} from '../../redux/slices/posts';
+import {MyContext} from '../../App';
+import sideBarIcon from '../../assets/img/sideBar.png';
 
 const Header = () => {
-    const [viewActivation, setViewActivation] = React.useState(false);
     const dispatch = useDispatch();
-    const {data} = useSelector(state => state.auth)
-    const isNotAuth = data === null;
+    const navigate = useNavigate();
+    const filterItems = ['Все посты', 'По тегу'];
+    const {activeFilter, setActiveFilter, viewSideBar, setViewSideBar} = React.useContext(MyContext);
 
-    const onClickLogout = () => {
-        if(window.confirm('Вы действительно хотите выйти?')) {
-            dispatch(logout());
-            window.localStorage.removeItem('token')
-        }
+    const onClickFilter = (index) => {
+        setActiveFilter(index);
+        navigate('/');
+        dispatch(fetchPosts());
     };
-
-    const handleClickAvatar = () => {
-        setViewActivation(!viewActivation)
-    }
 
     return (
         <header>
             <div className={classes.container}>
-                <Link className={classes.left} to='/'>
-                    <div className={classes.logo} >BLOG</div>
-                </Link>
-                {!isNotAuth ?
-                    <div className={classes.right}>
-                        <img onClick={handleClickAvatar} src={data.avatarUrl || userAvatar} className={classes.avatar} alt="avatar"/>
-                        {
-                            viewActivation &&
-                            <div className={classes.view__avatar}>
-                                {data.avatarUrl && <img onClick={handleClickAvatar} src={data.avatarUrl} className={classes.avatar__full} alt="fullAvatar"/>}
-                                <div className={classes.name}>{data.fullName}</div>
-                            </div>
-                        }
-                        <Link to='/add-post'>
-                            <button className={classes.btn__create}>Создать пост</button>
-                        </Link>
-                        <Link to='/auth'>
-                            <button onClick={onClickLogout} className={classes.btn}>Выйти</button>
-                        </Link>
-                    </div> :
-                    <Link to='/auth' className={classes.right}>
-                        <button className={classes.btn}>Войти</button>
-                    </Link>
-                }
+                <div className={classes.filter}>
+                    {
+                        filterItems.map((el, index) => <div
+                            key={index}
+                            onClick={() => filterItems[0] === el && onClickFilter(index)}
+                            className={filterItems[activeFilter] === el ? classes.active : classes.item}>{el}</div>)
+                    }
+                </div>
+                <img src={sideBarIcon} className={classes.icon} onClick={() =>setViewSideBar(!viewSideBar)} alt="открать"/>
             </div>
         </header>
     );
