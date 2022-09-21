@@ -24,6 +24,13 @@ function App() {
     const [activeFilter, setActiveFilter] = React.useState(0);
     const [viewSideBar, setViewSideBar] = React.useState(false);
 
+    const body = document.body;
+    if (viewSideBar && window.screen.width < 768) {
+        body.style.overflow = 'hidden';
+    } else {
+        body.style.overflow = '';
+    }
+
     return (
         <div>
             <MyContext.Provider value={{activeFilter, setActiveFilter, viewSideBar, setViewSideBar}}>
