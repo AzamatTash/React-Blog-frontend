@@ -12,9 +12,11 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading}) => {
 
     return (
         <div className={classes.post}>
-            <img src={img} alt="img-post"
-                 className={classes.img} />
-            <Link className={classes.title} to={`/post/${id}`}>{title}</Link>
+            <Link to={`/post/${id}`}>
+                <img src={img} alt="img-post"
+                     className={classes.img} />
+                <div className={classes.title}>{title}</div>
+            </Link>
             {children && <div className={classes.content}>{children}</div>}
             <div className={classes.footer}>
                 <div className={classes.tags}>

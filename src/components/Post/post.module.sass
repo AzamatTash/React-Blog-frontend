@@ -7,6 +7,9 @@
   overflow: hidden
   margin-bottom: 30px
 
+  a
+    text-decoration: none
+
   .img
     display: block
     width: 100%
@@ -18,9 +21,13 @@
     font-weight: 700
     text-decoration: none
     color: #000
-    line-height: 60px
+    line-height: 50px
     padding: 10px
     transition: color 0.2s linear
+
+    @media (max-width: 425px)
+      font-size: 25px
+      line-height: 30px
 
     &:hover
       color: lighten(#000, 30%)
@@ -43,7 +50,6 @@
         padding-left: 10px
         position: relative
         transition: color 0.2s linear
-        cursor: pointer
 
         &:before
           display: block
@@ -55,9 +61,6 @@
           height: 5px
           background-color: #666666
           border-radius: 5px
-        &:hover
-          color: darken(#666666, 40%)
-
 
     .view
       display: flex
