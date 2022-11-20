@@ -30,6 +30,8 @@ const Home = () => {
                                   text={post.text}
                                   tags={post.tags}
                                   viewsCount={post.viewsCount}
+                                  user={post.user}
+                                  date={post.createdAt}
                             />
                     )
                 }

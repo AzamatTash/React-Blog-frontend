@@ -33,7 +33,7 @@ const Sidebar = () => {
     };
 
     const handleTouchEnd = () => {
-        if (touchStart - touchEnd < -150) {
+        if (touchStart - touchEnd < -100) {
             setViewSideBar(!viewSideBar)
         }
     };

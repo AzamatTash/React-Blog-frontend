@@ -15,6 +15,7 @@ const FullPost = () => {
     React.useEffect(() => {
         api.getOnePost(id).then((res) => {
             setData(res.data);
+            console.log(res.data.user);
             setLoading(false);
         }).catch(() => {
             alert('Не удалось найти данный пост');
@@ -29,6 +30,8 @@ const FullPost = () => {
                    tags={data.tags}
                    title={data.title}
                    viewsCount={data.viewsCount}
+                   user={data.user}
+                   date={data.createdAt}
                 >
                     <p>{data.text}</p>
                 </Post>}

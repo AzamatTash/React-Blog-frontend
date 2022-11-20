@@ -28,7 +28,7 @@ export const postsSlice = createSlice({
             state.status = 'loading';
         },
         [fetchPosts.fulfilled]: (state, action) => {
-            state.items = action.payload.reverse();
+            state.items = action.payload;
             state.status = 'loaded';
         },
         [fetchPosts.rejected]: (state) => {

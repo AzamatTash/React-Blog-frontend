@@ -6,6 +6,7 @@
   box-shadow: 10px 10px 21px #d3d3d6, -10px -10px 21px #fff
   overflow: hidden
   margin-bottom: 30px
+  position: relative
 
   &:last-child
     margin-bottom: 0
@@ -19,21 +20,72 @@
     height: 100%
     object-fit: cover
 
-  .title
-    font-size: 30px
-    font-weight: 700
-    text-decoration: none
-    color: #000
-    line-height: 50px
-    padding: 10px
-    transition: color 0.2s linear
+  .main
+    display: flex
+    justify-content: space-between
+    align-items: center
 
-    @media (max-width: 425px)
-      font-size: 25px
+    .title
+      width: 65%
+      font-size: 30px
+      font-weight: 700
+      text-decoration: none
+      color: #000
       line-height: 30px
+      padding: 10px
+      transition: color 0.2s linear
 
-    &:hover
-      color: lighten(#000, 30%)
+      @media (max-width: 993px)
+        width: 100%
+
+      @media (max-width: 425px)
+        font-size: 25px
+        line-height: 30px
+
+      &:hover
+        color: lighten(#000, 30%)
+
+    .info
+      display: flex
+      align-items: center
+      padding: 10px
+      color: #666666
+
+      @media (max-width: 993px)
+        position: absolute
+        top: 0
+        right: 0
+        background-color: transparent
+        border-bottom-left-radius: 10px
+        transition: 0.3s linear
+
+        &:hover
+          background-color: opacify(#ffffff, 0.8)
+
+          .name,
+          .date
+            opacity: 1
+
+      .name
+        font-weight: 500
+
+      .date
+        font-size: 12px
+
+      .name,
+      .date
+        text-align: right
+
+        @media (max-width: 993px)
+          opacity: 0
+
+      .avatar
+        display: block
+        width: 50px
+        height: 50px
+        margin-left: 20px
+        border-radius: 50%
+        object-fit: cover
 
   .content
     padding: 0 10px 10px
