@@ -43,24 +43,26 @@ const Sidebar = () => {
              onTouchStart={handleTouchStart}
              onTouchMove={handleTouchMove}
              onTouchEnd={handleTouchEnd}>
-            <Link className={classes.header} to='/'>
-                <div className={classes.logo} onClick={() => setViewSideBar(!viewSideBar)}>BLOG</div>
-            </Link>
-            <div className={classes.main}>
-                {!isNotAuth &&
-                    <>
-                        <img src={data.avatarUrl || userAvatar}
-                             className={classes.avatar} alt="avatar"/>
-                        <div className={classes.name}>{data.fullName}</div>
-                        <Link to='/add-post'>
-                            <button className={classes.btn__create}
-                                    onClick={() => setViewSideBar(!viewSideBar)}
-                            >+ Новый пост</button>
-                        </Link>
+            <div>
+                <Link className={classes.header} to='/'>
+                    <div className={classes.logo} onClick={() => setViewSideBar(!viewSideBar)}>BLOG</div>
+                </Link>
+                <div className={classes.main}>
+                    {!isNotAuth &&
+                        <>
+                            <img src={data.avatarUrl || userAvatar}
+                                 className={classes.avatar} alt="avatar"/>
+                            <div className={classes.name}>{data.fullName}</div>
+                            <Link to='/add-post'>
+                                <button className={classes.btn__create}
+                                        onClick={() => setViewSideBar(!viewSideBar)}
+                                >+ Новый пост</button>
+                            </Link>
 
-                    </>
-                }
-                <Tags/>
+                        </>
+                    }
+                    <Tags/>
+                </div>
             </div>
             <div className={classes.footer}>
                 {!isNotAuth ?

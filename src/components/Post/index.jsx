@@ -44,14 +44,14 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading, user, date
                 <img src={img} alt="img-post"
                      className={classes.img} />
                 <div className={classes.main}>
-                    <div className={classes.title}>{title}</div>
                     <div className={classes.info}>
+                        <img src={user.avatarUrl} className={classes.avatar} alt="avatar"/>
                         <div>
                             <div className={classes.name}>{user.fullName}</div>
                             <div className={classes.date}>{dateFormat(date, 'longDate', i18n.monthNames)}</div>
                         </div>
-                        <img src={user.avatarUrl} className={classes.avatar} alt="avatar"/>
                     </div>
+                    <div className={classes.title}>{title}</div>
                 </div>
             </Link>
             {children && <div className={classes.content}>{children}</div>}

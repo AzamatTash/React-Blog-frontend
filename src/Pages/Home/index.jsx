@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import Post from '../../components/Post';
 import {fetchPosts} from '../../redux/slices/posts';
+import NotFound from "../../components/NotFound";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Home = () => {
         <main>
             <div className={classes.content}>
                 {
-                    isPostsError ? <div className={classes.notFound}>Посты не найдены</div> :
+                    isPostsError ? <NotFound/> :
                     (isPostsLoading ? [...Array(5)] : items).map((post, index) =>
                         isPostsLoading ? <Post key={index} isLoading={true}/> :
                             <Post key={post._id}

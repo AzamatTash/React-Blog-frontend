@@ -17,8 +17,12 @@ export const api = {
     getMe() {
         return instance.get('auth/me');
     },
-    getPosts() {
-        return instance.get('posts');
+    getPosts(tag) {
+        if(tag) {
+            return instance.get(`posts?tags=${tag}`);
+        } else {
+            return instance.get('posts');
+        }
     },
     getOnePost(id) {
         return instance.get(`posts/${id}`);

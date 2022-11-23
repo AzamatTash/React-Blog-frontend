@@ -1,8 +1,8 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {api} from '../../axios'
 
-export const fetchPosts = createAsyncThunk('fetchPosts', async () => {
-        const {data} = await api.getPosts();
+export const fetchPosts = createAsyncThunk('fetchPosts', async (params) => {
+        const {data} = await api.getPosts(params);
         return data;
     }
 );
@@ -15,13 +15,7 @@ const initialState = {
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {
-        filterPosts: (state, action) => {
-            state.items = state.items.filter(obj => {
-                return obj.tags.includes(action.payload);
-            });
-        },
-    },
+    reducers: {},
     extraReducers: {
         [fetchPosts.pending]: (state) => {
             state.items = [];
@@ -38,5 +32,4 @@ export const postsSlice = createSlice({
     },
 });
 
-export const {filterPosts} = postsSlice.actions;
 export default postsSlice.reducer;
