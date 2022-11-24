@@ -17,12 +17,17 @@ export const api = {
     getMe() {
         return instance.get('auth/me');
     },
-    getPosts(tag) {
-        if(tag) {
-            return instance.get(`posts?tags=${tag}`);
-        } else {
-            return instance.get('posts');
+    getPosts({sort, filter}) {
+        if(sort && filter) {
+            return instance.get(`posts?sort=${sort}&tags=${filter}`);
         }
+        if(sort) {
+            return instance.get(`posts?sort=${sort}`);
+        }
+        if(filter) {
+            return instance.get(`posts?tags=${filter}`);
+        }
+        return instance.get('posts');
     },
     getOnePost(id) {
         return instance.get(`posts/${id}`);

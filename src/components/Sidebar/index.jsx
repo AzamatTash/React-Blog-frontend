@@ -42,7 +42,9 @@ const Sidebar = () => {
         <div className={viewSideBar ? classes.wrapper__active : classes.wrapper}
              onTouchStart={handleTouchStart}
              onTouchMove={handleTouchMove}
-             onTouchEnd={handleTouchEnd}>
+             onTouchEnd={handleTouchEnd}
+             tabIndex={0}
+             onBlur={() => setViewSideBar(false)}>
             <div>
                 <Link className={classes.header} to='/'>
                     <div className={classes.logo} onClick={() => setViewSideBar(!viewSideBar)}>BLOG</div>

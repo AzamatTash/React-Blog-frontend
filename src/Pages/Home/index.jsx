@@ -4,21 +4,27 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import Post from '../../components/Post';
 import {fetchPosts} from '../../redux/slices/posts';
-import NotFound from "../../components/NotFound";
+import NotFound from '../../components/NotFound';
+import Sort from '../../components/Sort';
 
 const Home = () => {
     const dispatch = useDispatch();
     const {items, status} = useSelector(state => state.posts);
+    const {sort, filter} = useSelector(state => state.sort);
 
     const isPostsLoading = status === 'loading';
     const isPostsError = status === 'error';
 
     React.useEffect(() => {
-        dispatch(fetchPosts());
-    },[]);
+        dispatch(fetchPosts({
+            sort: sort.sortType,
+            filter: filter
+        }));
+    },[sort, filter]);
 
     return (
         <main>
+            <Sort/>
             <div className={classes.content}>
                 {
                     isPostsError ? <NotFound/> :

@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import {fetchPosts} from '../../redux/slices/posts';
 import {MyContext} from '../../App';
 import sideBarIcon from '../../assets/img/sideBar.png';
+import {setFilter, setSort} from '../../redux/slices/sort';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,13 @@ const Header = () => {
         setActiveFilter(index);
         navigate('/');
         dispatch(fetchPosts());
+        dispatch(setSort(
+            {
+                sortType: '',
+                description: 'По уполчанию'
+            }
+        ));
+        dispatch(setFilter(''));
     };
 
     return (
@@ -30,7 +38,7 @@ const Header = () => {
                             className={filterItems[activeFilter] === el ? classes.active : classes.item}>{el}</div>)
                     }
                 </div>
-                <img src={sideBarIcon} className={classes.icon} onClick={() =>setViewSideBar(!viewSideBar)} alt="открать"/>
+                <img src={sideBarIcon} className={classes.icon} onClick={() =>setViewSideBar(!viewSideBar)} alt="<-"/>
             </div>
         </header>
     );

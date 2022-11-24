@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './tags.module.sass';
 import {useDispatch} from 'react-redux';
 
-import {fetchPosts} from '../../redux/slices/posts';
 import {MyContext} from '../../App';
+import {setFilter} from '../../redux/slices/sort';
 
 const Tag = ({tag}) => {
     const dispatch = useDispatch();
@@ -12,7 +12,9 @@ const Tag = ({tag}) => {
     const handleOnClickTag = e => {
         setActiveFilter(1);
         setViewSideBar(!viewSideBar);
-        dispatch(fetchPosts(e.target.innerText.replace('#', '')));
+
+        const currentTag = e.target.innerText.replace('#', '');
+        dispatch(setFilter(currentTag));
     };
 
     return (

@@ -40,20 +40,18 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading, user, date
 
     return (
         <div className={classes.post}>
-            <Link to={`/post/${id}`}>
-                <img src={img} alt="img-post"
-                     className={classes.img} />
-                <div className={classes.main}>
-                    <div className={classes.info}>
-                        <img src={user.avatarUrl} className={classes.avatar} alt="avatar"/>
-                        <div>
-                            <div className={classes.name}>{user.fullName}</div>
-                            <div className={classes.date}>{dateFormat(date, 'longDate', i18n.monthNames)}</div>
-                        </div>
+            <img src={img} alt="img-post"
+                 className={classes.img} />
+            <div className={classes.main}>
+                <div className={classes.info}>
+                    <img src={user.avatarUrl} className={classes.avatar} alt="avatar"/>
+                    <div>
+                        <div className={classes.name}>{user.fullName}</div>
+                        <div className={classes.date}>{dateFormat(date, 'longDate', i18n.monthNames)}</div>
                     </div>
-                    <div className={classes.title}>{title}</div>
                 </div>
-            </Link>
+                <Link to={`/post/${id}`} className={classes.title}>{title}</Link>
+            </div>
             {children && <div className={classes.content}>{children}</div>}
             <div className={classes.footer}>
                 <div className={classes.tags}>

@@ -4,23 +4,31 @@ import Editor from '../../components/Editor/Editor';
 import {Field, Form, Formik} from 'formik';
 import {api} from '../../axios';
 import {Navigate, useNavigate} from 'react-router-dom';
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux';
+
+import {MyContext} from "../../App";
 
 const AddPost = () => {
     const navigate = useNavigate();
+    const {setActiveFilter} = React.useContext(MyContext);
+
     const {data} = useSelector(state => state.auth)
     const isNotAuth = data === null;
+
     const [text, setText] = React.useState('');
     const [imageUrl, setImageUrl] = React.useState('');
+
     const inputFileRef = React.useRef(null);
     const initialValues = {
         title: '',
         tags: ''
-    }
+    };
 
     const onChange = (value) => {
         setText(value);
     };
+
+    React.useEffect(() => setActiveFilter(0), []);
 
     const handleChangeFile = async (e) => {
         try {

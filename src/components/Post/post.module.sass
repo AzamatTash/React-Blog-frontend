@@ -22,27 +22,13 @@
     margin-bottom: 10px
 
   .main
-    .title
-      width: 100%
-      font-size: 30px
-      font-weight: 700
-      text-decoration: none
-      color: #000
-      line-height: 30px
-      padding: 10px
-      transition: color 0.2s linear
-
-      @media (max-width: 425px)
-        font-size: 25px
-        line-height: 30px
-
-      &:hover
-        color: lighten(#000, 30%)
+    padding: 10px
 
     .info
       display: flex
       align-items: center
       color: #666666
+      margin-bottom: 5px
 
       .name
         font-weight: 500
@@ -58,9 +44,25 @@
         display: block
         width: 35px
         height: 35px
-        margin: 0 10px
+        margin-right: 10px
         border-radius: 50%
         object-fit: cover
+
+    .title
+      width: 100%
+      font-size: 30px
+      font-weight: 700
+      text-decoration: none
+      color: #000
+      line-height: 30px
+      transition: color 0.2s linear
+
+      @media (max-width: 425px)
+        font-size: 25px
+        line-height: 30px
+
+      &:hover
+        color: lighten(#000, 30%)
 
   .content
     padding: 0 10px 10px
