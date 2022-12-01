@@ -23,9 +23,7 @@ const Register = () => {
     const onSubmit = async (values) => {
         try {
             const {payload} = await dispatch(fetchRegister(values));
-            if('token' in payload) {
-                window.localStorage.setItem('token', payload.token);
-            }
+            if('token' in payload) return window.localStorage.setItem('token', payload.token);
             navigate('/');
         } catch (err) {
             alert('Не удалось зарегистрироваться');

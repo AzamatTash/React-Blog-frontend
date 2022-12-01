@@ -12,7 +12,7 @@ import {fetchAuth} from '../../redux/slices/auth';
 
 const Login = () => {
     const dispatch = useDispatch();
-    const {data} = useSelector(state => state.auth)
+    const {data} = useSelector(state => state.auth);
     const isNotAuth = data === null;
 
     const initialValues = {

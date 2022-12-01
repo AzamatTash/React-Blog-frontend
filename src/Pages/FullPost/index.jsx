@@ -15,12 +15,11 @@ const FullPost = () => {
     React.useEffect(() => {
         api.getOnePost(id).then((res) => {
             setData(res.data);
-            console.log(res.data.user);
             setLoading(false);
         }).catch(() => {
             alert('Не удалось найти данный пост');
         })
-    },[])
+    },[]);
 
     return (
         <div className={classes.content}>

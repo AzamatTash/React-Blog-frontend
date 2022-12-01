@@ -6,7 +6,7 @@ import {api} from '../../axios';
 import {Navigate, useNavigate} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
-import {MyContext} from "../../App";
+import {MyContext} from '../../App';
 
 const AddPost = () => {
     const navigate = useNavigate();
@@ -24,9 +24,7 @@ const AddPost = () => {
         tags: ''
     };
 
-    const onChange = (value) => {
-        setText(value);
-    };
+    const onChange = (value) => setText(value);
 
     React.useEffect(() => setActiveFilter(0), []);
 
@@ -38,13 +36,11 @@ const AddPost = () => {
             const {data} = await api.uploadImg(formData);
             setImageUrl('https://react-blog-backend-mern.herokuapp.com' + data.url);
         } catch (err) {
-            alert('Ошибак при загрузке изображения')
+            alert('Ошибак при загрузке изображения');
         }
     };
 
-    const onClickRemoveImage = () => {
-        setImageUrl('');
-    };
+    const onClickRemoveImage = () => setImageUrl('');
 
     const onSubmit = async (values) => {
         try {
@@ -74,7 +70,7 @@ const AddPost = () => {
                     <button className={classes.btn__del} onClick={onClickRemoveImage}>
                         Удалить
                     </button>
-                    <img className={classes.image} src={imageUrl} alt="Uploaded" />
+                    <img className={classes.image} src={imageUrl} alt='Uploaded' />
                 </>
             )}
             <Formik initialValues={initialValues} onSubmit={onSubmit}>

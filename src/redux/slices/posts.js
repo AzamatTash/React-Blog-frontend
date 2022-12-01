@@ -4,8 +4,7 @@ import {api} from '../../axios'
 export const fetchPosts = createAsyncThunk('fetchPosts', async (params) => {
         const {data} = await api.getPosts({...params});
         return data;
-    }
-);
+});
 
 const initialState = {
     items: [],

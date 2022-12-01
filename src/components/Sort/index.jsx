@@ -32,7 +32,7 @@ const Sort = () => {
     React.useEffect(() => {
         const currentSort = list[active];
         dispatch(setSort(currentSort));
-    },[active])
+    },[active]);
 
     return (
         <div className={open ? classes.wrapperOpen : classes.wrapper}

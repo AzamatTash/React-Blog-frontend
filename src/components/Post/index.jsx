@@ -7,9 +7,7 @@ import view from '../../assets/img/view.png';
 import PreloaderPost from './PreloaderPost';
 
 const Post = ({children, id, img, title, tags, viewsCount, isLoading, user, date}) => {
-    if (isLoading) {
-        return <PreloaderPost />;
-    }
+    if (isLoading) return <PreloaderPost />;
 
     i18n.monthNames = [
         "Jan",

@@ -33,10 +33,10 @@ export const api = {
         return instance.get(`posts/${id}`);
     },
     uploadImg(file) {
-        return instance.post('upload', file)
+        return instance.post('upload', file);
     },
     uploadPost(data) {
-        return instance.post('posts', data)
+        return instance.post('posts', data);
     },
     getTags() {
         return instance.get('tags');

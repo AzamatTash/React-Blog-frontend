@@ -14,12 +14,10 @@ import {fetchAuthMe} from './redux/slices/auth';
 
 export const MyContext = React.createContext('');
 
-function App() {
+const App = () => {
     const dispatch = useDispatch();
 
-    React.useEffect(() => {
-        dispatch(fetchAuthMe());
-    }, []);
+    React.useEffect(() => dispatch(fetchAuthMe()),[]);
 
     const [activeFilter, setActiveFilter] = React.useState(0);
     const [viewSideBar, setViewSideBar] = React.useState(false);
@@ -41,6 +39,6 @@ function App() {
             </MyContext.Provider>
         </div>
     );
-}
+};
 
 export default App;

@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleMDE from 'react-simplemde-editor'
-import 'easymde/dist/easymde.min.css'
+import 'easymde/dist/easymde.min.css';
 import classes from './editor.module.sass';
 
 const Editor = ({onChange, value}) => {
@@ -11,7 +11,8 @@ const Editor = ({onChange, value}) => {
             placeholder: 'Введите текст...',
             shortcuts: { toggleFullScreen: null, toggleSideBySide: null },
             hideIcons: ['quote', 'side-by-side', 'fullscreen'],
-        }),[]
+        }),
+        []
     );
 
     return (
@@ -21,7 +22,7 @@ const Editor = ({onChange, value}) => {
             className={classes.editor}
             options={defaultOptions}
         />
-    )
+    );
 };
 
 export default Editor;
