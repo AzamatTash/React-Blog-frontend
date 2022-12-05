@@ -34,7 +34,7 @@ const AddPost = () => {
             const file = e.target.files[0];
             formData.append('image', file);
             const {data} = await api.uploadImg(formData);
-            setImageUrl('https://react-blog-backend-mern.herokuapp.com' + data.url);
+            setImageUrl('https://react-blog-backend-3emf.onrender.com' + data.url);
         } catch (err) {
             alert('Ошибак при загрузке изображения');
         }

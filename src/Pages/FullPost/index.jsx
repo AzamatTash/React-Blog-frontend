@@ -2,6 +2,8 @@ import React from 'react';
 import classes from './fullPost.module.sass';
 import {api} from "../../axios";
 import {useParams} from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+
 
 import Post from '../../components/Post';
 import PreloaderFullPost from './PreloaderFullPost';
@@ -32,7 +34,7 @@ const FullPost = () => {
                    user={data.user}
                    date={data.createdAt}
                 >
-                    <p>{data.text}</p>
+                    <ReactMarkdown children={data.text}/>
                 </Post>}
         </div>
     );
