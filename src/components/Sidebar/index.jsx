@@ -43,7 +43,6 @@ const Sidebar = () => {
                 <Link className={classes.header} to='/'>
                     <img src={closeIcon} className={classes.closeIcon} onClick={() => setViewSideBar(!viewSideBar)} alt="->"/>
                     <div className={classes.logo} onClick={() => setViewSideBar(!viewSideBar)}>BLOG</div>
-                    <div className={classes.logo} onClick={() => setViewSideBar(!viewSideBar)}>BLOG</div>
                 </Link>
                 <div className={classes.main}>
                     {!isNotAuth &&
