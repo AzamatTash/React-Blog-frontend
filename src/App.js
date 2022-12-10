@@ -33,6 +33,7 @@ const App = () => {
                         <Route path='/post/:id' element={<FullPost/>}/>
                         <Route path='/auth' element={<Login/>}/>
                         <Route path='/register' element={<Register/>}/>
+                        <Route path='/post/:id/edit' element={<AddPost/>}/>
                         <Route path='/add-post' element={<AddPost/>}/>
                     </Routes>
                 </div>

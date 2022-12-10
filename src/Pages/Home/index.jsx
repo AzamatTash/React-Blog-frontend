@@ -11,6 +11,7 @@ const Home = () => {
     const dispatch = useDispatch();
     const {items, status} = useSelector(state => state.posts);
     const {sort, filter} = useSelector(state => state.sort);
+    const userData = useSelector(state => state.auth.data);
 
     const isPostsLoading = status === 'loading';
     const isPostsError = status === 'error';
@@ -39,6 +40,7 @@ const Home = () => {
                                   viewsCount={post.viewsCount}
                                   user={post.user}
                                   date={post.createdAt}
+                                  isEditable={userData?._id === post.user._id}
                             />
                     )
                 }

@@ -4,35 +4,38 @@ import {api} from "../../axios";
 import {useParams} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
-
 import Post from '../../components/Post';
 import PreloaderFullPost from './PreloaderFullPost';
+import {useSelector} from "react-redux";
 
 const FullPost = () => {
     const [data, setData] = React.useState();
     const [isLoading, setLoading] = React.useState(true);
+    const userData = useSelector(state => state.auth.data);
 
     const {id} = useParams();
 
     React.useEffect(() => {
-        api.getOnePost(id).then((res) => {
-            setData(res.data);
+        const fetchPost = async () => {
+            const {data} = await api.getOnePost(id);
+            setData(data);
             setLoading(false);
-        }).catch(() => {
-            alert('Не удалось найти данный пост');
-        })
+        };
+        fetchPost().catch(() => alert('Не удалось найти данный пост'));
     },[]);
 
     return (
         <div className={classes.content}>
             {isLoading ? <PreloaderFullPost/> :
-                <Post key={data._is}
-                   img={data.imageUrl}
-                   tags={data.tags}
-                   title={data.title}
-                   viewsCount={data.viewsCount}
-                   user={data.user}
-                   date={data.createdAt}
+                <Post key={data._id}
+                      id={data._id}
+                      img={data.imageUrl}
+                      tags={data.tags}
+                      title={data.title}
+                      viewsCount={data.viewsCount}
+                      user={data.user}
+                      date={data.createdAt}
+                      isEditable={userData?._id === data.user._id}
                 >
                     <ReactMarkdown children={data.text}/>
                 </Post>}

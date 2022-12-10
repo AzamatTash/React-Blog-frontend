@@ -38,6 +38,12 @@ export const api = {
     uploadPost(data) {
         return instance.post('posts', data);
     },
+    changePost(id, data) {
+        return instance.patch(`posts/${id}`, data);
+    },
+    removePost(id) {
+        return instance.delete(`posts/${id}`);
+    },
     getTags() {
         return instance.get('tags');
     }
