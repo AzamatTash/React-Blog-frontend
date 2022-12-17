@@ -38,7 +38,7 @@ const Header = () => {
                             className={filterItems[activeFilter] === el ? classes.active : classes.item}>{el}</div>)
                     }
                 </div>
-                <img src={sideBarIcon} className={classes.icon} onClick={() =>setViewSideBar(!viewSideBar)} alt="<-"/>
+                <img src={sideBarIcon} className={classes.icon} onClick={() =>setViewSideBar(!viewSideBar)} alt='<-'/>
             </div>
         </header>
     );

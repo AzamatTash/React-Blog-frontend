@@ -1,12 +1,12 @@
 import React from 'react';
 import classes from './addPost.module.sass';
-import Editor from '../../components/Editor/Editor';
 import {Field, Form, Formik} from 'formik';
-import {api} from '../../axios';
 import {Navigate, useNavigate, useParams} from 'react-router-dom';
 import {useSelector} from 'react-redux';
 
+import Editor from '../../components/Editor/Editor';
 import {MyContext} from '../../App';
+import {api} from '../../axios';
 
 const AddPost = () => {
     const {setActiveFilter} = React.useContext(MyContext);
@@ -85,7 +85,7 @@ const AddPost = () => {
             <button type='submit' className={classes.btn} onClick={() => inputFileRef.current.click()}>
                 + Добавить превью
             </button>
-            <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
+            <input ref={inputFileRef} type='file' onChange={handleChangeFile} hidden />
             {imageUrl && (
                 <>
                     <button className={classes.btn__del} onClick={onClickRemoveImage}>

@@ -17,35 +17,33 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading, user, date
     if (isLoading) return <PreloaderPost />;
 
     i18n.monthNames = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-        "Январь",
-        "Февраль",
-        "Март",
-        "Апрель",
-        "Май",
-        "Июнь",
-        "Июль",
-        "Август",
-        "Сентябрь",
-        "Октябрь",
-        "Ноябрь",
-        "Декабрь",
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь',
     ];
 
-    const onClickEditBtn = () => {
-        navigate(`/post/${id}/edit`);
-    };
+    const onClickEditBtn = () => navigate(`/post/${id}/edit`);
     const onClickRemoveBtn = async () => {
         try {
             if(window.confirm('Вы действительно хотите удалить пост?')) {
@@ -69,10 +67,10 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading, user, date
                 </button>
             </div>
             }
-            <img src={img} alt="img-post" className={classes.img}/>
+            <img src={img} alt='img-post' className={classes.img}/>
             <div className={classes.main}>
                 <div className={classes.info}>
-                    <img src={user.avatarUrl} className={classes.avatar} alt="avatar"/>
+                    <img src={user.avatarUrl} className={classes.avatar} alt='avatar'/>
                     <div>
                         <div className={classes.name}>{user.fullName}</div>
                         <div className={classes.date}>{dateFormat(date, 'longDate', i18n.monthNames)}</div>
@@ -89,7 +87,7 @@ const Post = ({children, id, img, title, tags, viewsCount, isLoading, user, date
                 </div>
 
                 <div className={classes.view}>
-                    <img src={view} className={classes.icon} alt="views"/>
+                    <img src={view} className={classes.icon} alt='views'/>
                     <div className={classes.count}>{viewsCount}</div>
                 </div>
             </div>

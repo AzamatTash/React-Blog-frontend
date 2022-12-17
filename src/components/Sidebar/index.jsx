@@ -41,14 +41,14 @@ const Sidebar = () => {
              onBlur={() => setViewSideBar(false)}>
             <div>
                 <Link className={classes.header} to='/'>
-                    <img src={closeIcon} className={classes.closeIcon} onClick={() => setViewSideBar(!viewSideBar)} alt="->"/>
+                    <img src={closeIcon} className={classes.closeIcon} onClick={() => setViewSideBar(!viewSideBar)} alt='->'/>
                     <div className={classes.logo} onClick={() => setViewSideBar(!viewSideBar)}>BLOG</div>
                 </Link>
                 <div className={classes.main}>
                     {!isNotAuth &&
                         <>
                             <img src={data.avatarUrl || userAvatar}
-                                 className={classes.avatar} alt="avatar"/>
+                                 className={classes.avatar} alt='avatar'/>
                             <div className={classes.name}>{data.fullName}</div>
                             <Link to='/add-post'>
                                 <button className={classes.btn__create}

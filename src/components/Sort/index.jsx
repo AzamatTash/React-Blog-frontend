@@ -13,19 +13,19 @@ const Sort = () => {
     const list = [
         {
             sortType: '',
-            description: 'По уполчанию'
+            description: 'По умолчанию'
         },
         {
             sortType: 'title',
             description: 'По названию'
         },
         {
-            sortType: 'date',
-            description: 'Сначала старые'
+            sortType: 'views',
+            description: 'По популярности'
         },
         {
-            sortType: 'views',
-            description: 'Сначала популярные'
+            sortType: 'date',
+            description: 'Сначала старые'
         }
     ];
 

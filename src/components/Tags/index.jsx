@@ -19,7 +19,7 @@ const Tags = () => {
         <div className={classes.tags}>
             <div className={classes.title}>Поиск по тегу</div>
             {
-                isTagsError ? <div className={classes.notFound}>Теги не найдены<img src={notFount} alt="404"/></div>:
+                isTagsError ? <div className={classes.notFound}>Теги не найдены<img src={notFount} alt='404'/></div>:
                     items.map((tag, index) => <Tag key={index} tag={tag}/>)
             }
         </div>

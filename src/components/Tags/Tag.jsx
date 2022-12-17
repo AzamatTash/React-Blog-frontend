@@ -6,7 +6,6 @@ import {useNavigate} from 'react-router-dom';
 import {MyContext} from '../../App';
 import {setFilter} from '../../redux/slices/sort';
 
-
 const Tag = ({tag}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();

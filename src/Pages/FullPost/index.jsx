@@ -1,12 +1,11 @@
 import React from 'react';
-import classes from './fullPost.module.sass';
-import {api} from "../../axios";
 import {useParams} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 import ReactMarkdown from 'react-markdown';
 
+import {api} from '../../axios';
 import Post from '../../components/Post';
 import PreloaderFullPost from './PreloaderFullPost';
-import {useSelector} from "react-redux";
 
 const FullPost = () => {
     const [data, setData] = React.useState();
@@ -25,7 +24,7 @@ const FullPost = () => {
     },[]);
 
     return (
-        <div className={classes.content}>
+        <div>
             {isLoading ? <PreloaderFullPost/> :
                 <Post key={data._id}
                       id={data._id}
