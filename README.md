@@ -1,5 +1,7 @@
 <h1 align="center">Blog</h1>
 
+![blog](https://github.com/AzamatTash/React-Blog-frontend/assets/91409425/0010cbc5-4a99-43af-8b67-e47ee991050b)
+
 Blog (Fullstack MERN) - это приложение представляет собой простой блог, который позволяет пользователям создавать аккаунты, писать, редактировать и удалять статьи, а также просматривать статьи, созданные другими людьми
 
 <h3 align="left">Stack:</h3>
